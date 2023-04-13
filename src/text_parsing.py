@@ -1,5 +1,6 @@
 from docx import Document
 import pickle
+import os
 
 def parse_docx(doc_name: str):
     # read document
@@ -42,8 +43,11 @@ def parse_docx(doc_name: str):
             else:
                 doc_res[cur_head]['Text'] += ' ' + cur_text
 
-    with open('result.pickle', 'wb') as handle:
+    # Get the list of all files and directories
+    # in the root directory
+    path = "/"
+    with open(os.path.dirname(os.path.dirname(__file__)) + '/data/result.pickle', 'wb') as handle:
         pickle.dump(doc_res, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    print('DONE')
+    print('TEXT PARSING DONE')
     
     return doc_res
