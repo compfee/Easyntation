@@ -35,19 +35,37 @@ class PPTGenerator:
 
     # Add Subtitle
     def add_subtitle(self, subtitle, index_slide, subtitle_left, subtitle_top):
+        # slide = self.prs.slides[index_slide]
+        # slide.shapes.title.text = subtitle
+
         slide = self.get_slide(index_slide)
         subtitle = slide.shapes.add_textbox(subtitle_left, subtitle_top, width=Inches(8), height=Inches(1))
-        subtitle.text_frame.paragraphs[0].font.size = Pt(24)
+        shape = slide.shapes
+        title_shape = shape.title
+        # title_shape.text_frame.paragraphs[0].font.size = Pt(10)
+        title_shape.text_frame.paragraphs[0].font.size = Pt(15)
+        # subtitle.text_frame.paragraphs[0].font.size = Pt(16)
+        title_shape.text = subtitle
+
 
     # Add text
     def add_text(self, title, content, index_slide):
-        slide = self.get_slide(index_slide)
+        slide = self.prs.slides[index_slide]
+
         title_box = slide.shapes.title
         title_box.text = title
+
+        title_para = slide.shapes.title.text_frame.paragraphs[0]
+        title_para.font.name = "Calibri"
+        title_para.font.size = Pt(24)
+        # title_para.font.underline = True
+
         body_shape = slide.shapes.placeholders[1]
-        body_shape.text_frame.paragraphs[0].font.size = Pt(10)
-        tf = body_shape.text_frame
-        tf.text = content
+        text_place = body_shape.text_frame.paragraphs[0]
+        text_place.font.name = "Calibri"
+        text_place.font.size = Pt(20)
+        text_place.text = content
+
 
     # Add image
     def add_image(self, title, image_file, index_slide):
