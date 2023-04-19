@@ -17,11 +17,12 @@ if __name__ == '__main__':
 
   print(article_text_full)
   ppt = PPTGenerator('Example PPT')
-  ppt.add_slide(ppt.get_slide_layout(1))
-  ppt.add_title(title='Title', index_slide=0)
+  ppt.add_slide(ppt.get_slide_layout(0))
+  ppt.add_title(title_text=article_text_full[0]['Heading'], index_slide=0)
 
   ppt.add_slide(ppt.get_slide_layout(1))
   ppt.add_text(article_text_full[1]['Heading'], summ_text(article_text_full[1]), index_slide=1)
+  # ppt.add_image('Image', '1.jpg', index_slide=1)
 
   # print(article_text_full[8]['Enum'][0])
   # print(article_text_full[8]['Enum'][3])
@@ -37,5 +38,5 @@ if __name__ == '__main__':
   #
   # ppt.add_slide(ppt.get_slide_layout(1))
   # ppt.add_text(article_text_full[16]['Heading'], summ_text(article_text_full[16]), index_slide=3)
-  # ppt.add_image('Image', 'image.jpg', index_slide=1)
+
   ppt.save_ppt()

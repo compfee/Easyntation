@@ -4,7 +4,6 @@ from text_parsing import parse_docx
 
 app = Flask(__name__)
 
-
 def prepare_doc(doc):
     list_of_pars = parse_docx(doc)
     return list_of_pars

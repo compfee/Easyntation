@@ -23,7 +23,7 @@ def summ_text(text):
     )["input_ids"].to("cpu")
 
     output_ids = model.generate(
-        max_length= 200,
+        max_length = 500,
         min_length = 40,
         length_penalty = 5,
         input_ids=input_ids,
