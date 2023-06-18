@@ -9,11 +9,7 @@ def summ_text(text):
     # model.to("cuda")
     print('MODEL LOADED')
     model.to("cpu")
-
-    # print(text)
-    # print(len(text))
     article_text = text
-
 
     input_ids = tokenizer(
         [article_text['Text']],
