@@ -14,7 +14,7 @@ if __name__ == '__main__':
   with open(os.path.dirname(os.path.dirname(__file__)) + '/data/result.pickle', "rb") as f:
     article_text_full = pickle.load(f)
 
-  print(article_text_full)
+  # print(article_text_full)
   ppt = PPTGenerator('Example PPT')
   ppt.add_slide(ppt.get_slide_layout(0))
   ppt.add_title(title_text=article_text_full[0]['Heading'], index_slide=0)
@@ -27,7 +27,7 @@ if __name__ == '__main__':
                article_text_full[8]['Enum'][3], article_text_full[8]['Enum'][4],
                article_text_full[8]['Enum'][5]]
   ppt.add_slide(ppt.get_slide_layout(1))
-  print(list_text)
+  # print(list_text)
   ppt.add_text(article_text_full[8]['Subtitle'], list_text, index_slide=2, location='center')
 
   ppt.add_slide(ppt.get_slide_layout(1))
