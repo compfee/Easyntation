@@ -1,0 +1,50 @@
+<tui-root class="content">
+  <div >
+    <div class="card">
+    </div>
+    <h1 class="tui-text_h1 header-title" >{{title}}</h1>
+    <p class="sub-text">Presentations made easy!</p>
+
+    <div class="input-content tui-space_top-5">
+      <tui-text-area class="text-input" formControlName="testValue">Paste file content here</tui-text-area>
+      <h2 class="inputs-divider">OR</h2>
+      <tui-input-files>
+        <tui-file
+          *ngIf="loadingFile"
+          [state]=documentState
+          [ngModel]="loadingFile"
+          (ngModelChange)="ngModelChange($event)"
+          [file]="loadingFile"
+          (removed)="removeLoading()"
+        ></tui-file>
+      </tui-input-files>
+    </div>
+    <button
+      tuiButton
+      type="button"
+      appearance="primary"
+      class="submit-btn"
+      [disabled]="documentState !== 'normal'"
+      (click)="handleConvertToPptxButton()"
+    >
+      Convert file to .pptx
+    </button>
+    <tui-loader
+      *ngIf="isBtnClicked"
+      class="tui-space_top-5"
+      [showLoader]="true"
+      [inheritColor]="true"
+    ></tui-loader>
+    <a
+      *ngIf="sendDocument"
+      class="presentation-done-sign"
+      tuiLink
+      target="_blank"
+      href="https://docs.google.com/presentation/d/1bwvo3y3aw6bi7L5afXu1ckRqrpbekdee/edit?usp=share_link&ouid=109507064941893838920&rtpof=true&sd=true"
+    >
+      Your presentation just created! 0,,0
+    </a>
+  </div>
+
+</tui-root>
+

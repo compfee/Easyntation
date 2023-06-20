@@ -1,9 +1,10 @@
-# Import necessary libraries
+import os
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.enum.text import MSO_VERTICAL_ANCHOR, MSO_AUTO_SIZE
 from pptx.enum.text import PP_PARAGRAPH_ALIGNMENT
-import os
+
+
 # Create PPT generator class
 class PPTGenerator:
     # Initialize function, define PPT properties
@@ -13,8 +14,6 @@ class PPTGenerator:
         self.slides = self.prs.slides
         # self.prs.slide_width = slide_width
         # self.prs.slide_height = slide_height
-
-
 
     def get_slide(self, index):
         return self.slides[index]
@@ -160,8 +159,6 @@ class PPTGenerator:
         slide = self.get_slide(index_slide)
         pic_height = self.prs.slide_height - Inches(1.0)
         img = slide.shapes.add_picture(image_file, pic_left, pic_top, pic_width, pic_height)
-
-
 
     # Set background
 
